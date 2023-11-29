@@ -3,16 +3,17 @@ import { initializeApp } from "firebase/app";
 import { getDatabase} from "firebase/database"
 import { getFirestore } from "firebase/firestore"
 import {getAuth} from 'firebase/auth'
-import {PUBLIC_FIREAPI, PUBLIC_FIREAUTH, PUBLIC_FIREDB, PUBLIC_FIREID, PUBLIC_FIREBUCKET, PUBLIC_FIRESENDER, PUBLIC_FIREAPP, PUBLIC_FIREMEASURE} from '$env/static/public'
+ 
 const firebaseConfig = {
-  apiKey: PUBLIC_FIREAPI,
-  authDomain: PUBLIC_FIREAUTH,
-  databaseURL: PUBLIC_FIREDB,
-  projectId: PUBLIC_FIREID,
-  storageBucket: PUBLIC_FIREBUCKET,
-  messagingSenderId: PUBLIC_FIRESENDER,
-  appId: PUBLIC_FIREAPP,
-  measurementId: PUBLIC_FIREMEASURE
+  apiKey: "AIzaSyBzzaSTr42firr3fx5YcdXhDzB4iBLVBOM",
+  authDomain: "contact-database-9c47b.firebaseapp.com",
+  databaseURL: "https://contact-database-9c47b-default-rtdb.firebaseio.com",
+  projectId: "contact-database-9c47b",
+  storageBucket: "contact-database-9c47b.appspot.com",
+  messagingSenderId: "118822537955",
+  appId: "1:118822537955:web:3ef795baeadbe37b7293d6",
+  measurementId: "G-0WY0798WFC"
+  
 };
 
 // Initialize Firebase
