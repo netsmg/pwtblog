@@ -134,7 +134,7 @@
     <span
       class="max-sm:text-[17px] self-center whitespace-nowrap text-xl font-bold font-poppins dark:text-orange-600 text-orange-500"
     >
-      Faisal.
+      PWTBLOG
     </span>
     <DarkMode {btnClass} />
   </NavBrand>
@@ -241,11 +241,11 @@
     <slot />
   <hr/>
     <div class="w-full  mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://hellofaisal.netlify.app/" class="hover:underline">Faisal™</a>. All Rights Reserved.
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://portfolio-alamin.vercel.app/" class="hover:underline">PWTBlOG™</a>. All Rights Reserved.
     </span>
     <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
         <li>
-            <a target="__blank" href="https://github.com/faisal-shohag/personal-blog" class="mr-4 hover:underline md:mr-6 "><Icon icon="octicon:logo-github-16" /></a>
+            <a target="__blank" href="https://codebuckblog.vercel.app/" class="mr-4 hover:underline md:mr-6 "><Icon icon="octicon:logo-github-16" /></a>
         </li>
     </ul>
     </div>
