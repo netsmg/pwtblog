@@ -143,7 +143,7 @@ const deleteMyComment = async(id) => {
     {/each}
   </div>
   <div class="text-2xl flex items-center gap-3 font-hind font-bold">{post.title}
-  {#if $userStore.uid == 'iO6NWstUISZXtTvTZdD9iiqWl2r2'}
+  {#if $userStore.uid == 'zMiv0HZewbUIBFjBhynv3eAo9HE3'}
   <a href="/edit/{params}"><Icon icon="basil:edit-solid" /></a>
   {/if}
   </div>
