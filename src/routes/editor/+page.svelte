@@ -41,7 +41,7 @@
           console.log({
                 ...formData,
                 createdAt: Timestamp.fromDate(new Date()),
-                author: 'Faisal Shohag',
+                author: 'PWTBLOG',
                 like: 0,
                 comment: 0,
                 reports: [],
@@ -52,7 +52,7 @@
                 ...formData,
                 content: content,
                 createdAt: Timestamp.fromDate(new Date()),
-                author: 'Faisal Shohag',
+                author: 'PWTBLOG',
                 like: 0,
                 comment: 0,
                 reports: [],
