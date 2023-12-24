@@ -1,33 +1,44 @@
 <script>
-  import { onMount } from 'svelte';
-  import { addDoc, Timestamp } from 'firebase/firestore';
-  import { fstore } from '../../firebase';
+  import { onMount } from "svelte";
+  import { getDatabase, ref, push } from "firebase/database";
 
-  let name = "";
-  let email = "";
-  let message = "";
+  let formData = {
+    name: "",
+    email: "",
+    message: "",
+  };
 
-  const submitContactForm = async () => {
-    try {
-      const docRef = await addDoc(collection(fstore, "contactForms"), {
-        name,
-        email,
-        message,
-        createdAt: Timestamp.fromDate(new Date())
-      });
-      console.log('Contact form submitted with ID: ', docRef.id);
-      // You can add additional logic or redirection after successful submission
-    } catch (err) {
-      console.error('Error submitting contact form:', err);
-    }
+  const handleSubmit = async () => {
+    const db = getDatabase();
+    const contactsRef = ref(db, "contacts");
+
+    // Push the form data to the "contacts" collection
+    await push(contactsRef, formData);
+
+    // Optional: Clear the form after submission
+    formData = {
+      name: "",
+      email: "",
+      message: "",
+    };
+
+    console.log("Form submitted to Firebase Realtime Database!");
   };
 </script>
 
-<div class="text-2xl font-hind font-bold">Contact Form</div>
-<div class="variant-glass p-5 rounded-md flex flex-col gap-2">
-  <input class="input" type="text" placeholder="Your Name" bind:value={name} />
-  <input class="input" type="email" placeholder="Your Email" bind:value={email} />
-  <textarea class="input" placeholder="Your Message" bind:value={message}></textarea>
-</div>
+<style>
+  /* Add your Tailwind styles here */
+</style>
 
-<button on:click={submitContactForm} class="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+<form on:submit={handleSubmit}>
+  <label for="name">Name:</label>
+  <input type="text" id="name" bind:value={formData.name} />
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" bind:value={formData.email} />
+
+  <label for="message">Message:</label>
+  <textarea id="message" rows="4" bind:value={formData.message}></textarea>
+
+  <button type="submit">Submit</button>
+</form>
