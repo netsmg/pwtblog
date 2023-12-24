@@ -157,7 +157,7 @@ const deleteMyComment = async(id) => {
   </div>
   <div class="m-0 p-0 flex gap-2 font-lato">
     <div class="flex gap-1 items-center justify-between">
-      <img class="w-[40px] h-[40px] max-sm:w-[30px] max-sm:h-[30px] rounded-full" src="https://firebasestorage.googleapis.com/v0/b/blog-424dc.appspot.com/o/photo_2023-05-01_17-36-37.jpg?alt=media&amp;token=1b4d753d-3beb-4957-83cf-2a9f7650bd6e" alt="Rounded avatar">
+      <img class="w-[40px] h-[40px] max-sm:w-[30px] max-sm:h-[30px] rounded-full" src="https://codebuckblog.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FLogo.e0b9e0a0.png&w=128&q=75" alt="Rounded avatar">
     </div>
     <div class="">
       <div><span class="font-bold max-sm:text-[14px]">{post.author}</span></div>
