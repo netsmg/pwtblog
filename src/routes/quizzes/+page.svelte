@@ -1,3 +1,4 @@
+
 <script>
   import { onMount } from 'svelte';
   import { getDatabase, ref, query, get } from 'firebase/database';
@@ -31,7 +32,19 @@
       error = true;
     }
   });
+
+  function getImageLink() {
+    return type === 'video'
+      ? `http://img.youtube.com/vi/${id}/maxresdefault.jpg`
+      : `https://stpl.vercel.app/${id}.webp`;
+  }
+
+  function getTypeClass() {
+    return type === 'quiz' ? 'flex h-28 flex-col justify-between gap-1' : 'h-14';
+  }
 </script>
+
+
 
 <div class="mx-auto mb-32 flex min-h-screen w-[90%] animate-reveal flex-col items-center">
   <h1 class="page-heading">Attempt Quizzes</h1>
@@ -90,14 +103,4 @@
   </div>
 </div>
 
-<script>
-  function getImageLink() {
-    return type === 'video'
-      ? `http://img.youtube.com/vi/${id}/maxresdefault.jpg`
-      : `https://stpl.vercel.app/${id}.webp`;
-  }
 
-  function getTypeClass() {
-    return type === 'quiz' ? 'flex h-28 flex-col justify-between gap-1' : 'h-14';
-  }
-</script>
