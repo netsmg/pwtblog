@@ -89,7 +89,7 @@
 
 
   onMount(async ()=>{
-    document.title = "Hello Faisal. | Home";
+    document.title = "PWTBLOG | Home";
     posts = [];
     const q = query(
       collection(fstore, "posts"),
