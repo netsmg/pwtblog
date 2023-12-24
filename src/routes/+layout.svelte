@@ -18,7 +18,7 @@
   import { DarkMode } from 'flowbite-svelte';
   let me;
   onMount(async () => {
-    document.title = "Hello Faisal. | Home";
+    document.title = "PWTBLOG | Home";
    const  saveSettings =() => {
       return new Promise((resolve, reject) => {
         let x = setInterval(()=>{
