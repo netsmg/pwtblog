@@ -29,28 +29,37 @@
 
 <div class="mx-auto mb-32 flex min-h-screen w-[90%] animate-reveal flex-col items-center">
   <h1 class="page-heading">Attempt Quizzes</h1>
-
-  {quiz.length > 0 && (
-    <div class="mx-auto grid h-full w-full grid-cols-quizzes justify-items-center gap-7">
-      {#each quiz as topic (topic.topicID)}
-        {#if topic.noq > 0}
-          <a href={`/quiz/${topic.topicID}`} target="_blank">
-            <Thumbnail {id=topic.topicID} {noq=topic.noq} {title=topic.title} {type="quiz"} />
-          </a>
-        {:else}
-          <div class="w-full">
-            <Thumbnail {id=topic.topicID} {noq=topic.noq} {title=topic.title} {type="quiz"} />
-          </div>
-        {/if}
-      {/each}
-    </div>
-  )}
+  
+{#if quiz.length > 0}
+  <div class="mx-auto grid h-full w-full grid-cols-quizzes justify-items-center gap-7">
+    {#each quiz as topic (topic.topicID)}
+      {#if topic.noq > 0}
+        <a href={`/quiz/${topic.topicID}`} target="_blank">
+          <Thumbnail {id=topic.topicID} {noq=topic.noq} {title=topic.title} {type="quiz"} />
+        </a>
+      {:else}
+        <div class="w-full">
+          <Thumbnail {id=topic.topicID} {noq=topic.noq} {title=topic.title} {type="quiz"} />
+        </div>
+      {/if}
+    {/each}
+  </div>
+{:else}
+  <p>No data found!</p>
+{/if}
 
   <div class="flex items-center justify-center text-center text-xl">
-    {!loading && quiz.length === 0 && <>No data found!</>}
-    {error && <>There was an error! Perhaps you are not a registered user; only registered users can get access. To get access, fill up the contact-form.</>}
-    {loading && <>Loading ...</>}
-  </div>
+  {#if !loading && quiz.length === 0}
+    <p>No data found!</p>
+  {/if}
+  {#if error}
+    <p>There was an error! Perhaps you are not a registered user; only registered users can get access. To get access, fill up the contact-form.</p>
+  {/if}
+  {#if loading}
+    <p>Loading ...</p>
+  {/if}
 </div>
 
-<!-- Footer component goes here -->
+
+  
+
