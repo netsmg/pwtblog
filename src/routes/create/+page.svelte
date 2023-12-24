@@ -1,6 +1,6 @@
 <script>
   import { getFirestore, collection, addDoc } from 'firebase/firestore';
-  import { navigate } from 'svelte-routing';
+  
 
   let newQuestions = [
     {
