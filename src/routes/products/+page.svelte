@@ -1,10 +1,9 @@
-<script>
-import { onMount } from 'svelte';
-    import {fstore, db, app} from '../../firebase';
-  
-  import { collection, onSnapshot } from 'firebase/firestore';
 
+<script>
+  import { collection, onSnapshot } from 'firebase/firestore';
+  import { getFirestore } from 'firebase/firestore';  
   let products = [];
+  const db = getFirestore();  // Use getFirestore to get Firestore instance
 
   const query = collection(db, 'products');
 
@@ -12,6 +11,8 @@ import { onMount } from 'svelte';
     products = snapshot.docs.map(doc => doc.data());
   });
 </script>
+
+
 
 <!-- Your Svelte HTML template -->
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
