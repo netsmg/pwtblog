@@ -29,5 +29,5 @@
   
 </script>
 
-<input type="file" accept=".jpg, .jpeg, .png, .pdf, .mp4" on:change={handleFileChange} />
-<button on:click={handleFileUpload}>Upload</button>
+<input type="file" class="input" accept=".jpg, .jpeg, .png, .pdf, .mp4" on:change={handleFileChange} />
+<button on:click={handleFileUpload} class="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Upload</button>
