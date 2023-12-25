@@ -23,7 +23,7 @@
   /* Add your styles here */
 </style>
 
-<div class="min-h-screen flex items-center justify-center">
+<div class="flex items-center justify-center">
   <div class="bg-gray-100 w-full mx-4 p-4 rounded-xl md:w-1/2 lg:w-1/3">
     <!-- MODAL HEADER -->
     <div class="flex justify-between items-center border-b border-gray-200 py-3">
