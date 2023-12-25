@@ -5,7 +5,7 @@
   let filesList = [];
 
   const storage = getStorage();
-  const storageRef = ref(storage, 'pwtblog/');
+  const storageRef = ref(storage, '/');
 
   const generateDownloadLink = (file) => {
     // Generate the download link for the file
