@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import firebase from 'firebase/app';
+
   import 'firebase/firestore';
   
 let newMessage = ''; 
