@@ -1,10 +1,17 @@
 <script>
-import 'firebase/firestore';
-  
-let newMessage = ''; 
+  import { onMount } from 'svelte';
+  import { collection, onSnapshot } from 'firebase/firestore';
+  import { getFirestore } from 'firebase/firestore';
 
-  const db = firebase.firestore();
-  const messages = [];
+  let newMessage = '';
+  let messages = [];
+  const db = getFirestore();
+
+  const query = collection(db, 'messages');
+
+  onSnapshot(query, (snapshot) => {
+    messages = snapshot.docs.map(doc => doc.data());
+  });
 
   // Fetch messages from Firestore
   const fetchMessages = async () => {
@@ -26,7 +33,7 @@ let newMessage = '';
       });
     });
 
-    return unsubscribe; // Cleanup listener on component destroy
+    return () => unsubscribe(); // Cleanup listener on component destroy
   });
 
   // Function to send a new message
@@ -39,7 +46,7 @@ let newMessage = '';
 </script>
 
 <main>
-  {#each messages as message (message.id)}
+  {#each messages as message (message.text)}
     <div>{message.text}</div>
   {/each}
 
