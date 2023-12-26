@@ -3,6 +3,7 @@
   import firebase from 'firebase/app';
   import 'firebase/firestore';
   
+let newMessage = ''; 
 
   const db = firebase.firestore();
   const messages = [];
