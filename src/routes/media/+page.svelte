@@ -1,33 +1,36 @@
+<!-- FileList.svelte -->
 <script>
   import { onMount } from 'svelte';
-  import { getStorage, ref, listAll } from 'firebase/storage';
-
-  let filesList = [];
+  import { getStorage } from 'firebase/storage';
 
   const storage = getStorage();
-  const storageRef = ref(storage, '/');
-
-  const generateDownloadLink = (file) => {
-    // Generate the download link for the file
-    return `https://firebasestorage.googleapis.com/v0/b/contact-database-9c47b.appspot.com/o/pwtblog/${encodeURIComponent(file)}`;
-  };
-
-  const getFilesList = async () => {
-    const filesList = await listAll(storageRef);
-    return filesList.items.map((item) => item.fullPath);
-  };
+  let files = [];
+  let error = null;
 
   onMount(async () => {
-    filesList = await getFilesList();
+    try {
+      const listRef = storage.ref('/');
+      const items = await listRef.listAll();
+
+      files = items.items.map((item) => ({
+        name: item.name,
+        downloadUrl: item.getDownloadURL(),
+      }));
+    } catch (e) {
+      console.error('Error fetching files:', e.message);
+      error = 'Error fetching files. Please try again later.';
+    }
   });
 </script>
 
-<ul>
-  {#each filesList as file}
-    <li>
-      <a href={generateDownloadLink(file)} download>
-        {file}
-      </a>
-    </li>
-  {/each}
-</ul>
+{#if error}
+  <p>{error}</p>
+{:else}
+  <ul>
+    {#each files as { name, downloadUrl }}
+      <li>
+        {name} - <a href={downloadUrl} download>Download</a>
+      </li>
+    {/each}
+  </ul>
+{/if}
