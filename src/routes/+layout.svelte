@@ -186,11 +186,11 @@
       > -->
       <AppRailTile
         on:click={openSide}
-        label="Coding"
+        label="Contact"
         tag="a"
-        href={"/coding"}
+        href={"/contact"}
         value={1}
-        class="{'/coding' === $page.url.pathname ? '!bg-primary-500' : ''}"
+        class="{'/contact' === $page.url.pathname ? '!bg-primary-500' : ''}"
         ><Icon
           class="text-3xl"
           icon="ion:rocket"
@@ -209,11 +209,11 @@
 
       <AppRailTile
         on:click={openSide}
-        label="Resume"
+        label="Blog"
         tag="a"
-        href={"/resume"}
+        href={"/blogs"}
         value={3}
-        class="{'/resume' === $page.url.pathname ? '!bg-primary-500' : ''}"
+        class="{'/blogs' === $page.url.pathname ? '!bg-primary-500' : ''}"
         ><Icon class="text-3xl" icon="fluent-emoji-high-contrast:popcorn" />
         </AppRailTile>
       
