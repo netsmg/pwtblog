@@ -7,8 +7,7 @@
   import ship from '../../../images/space-shuttle.png';
   // import ship2 from '../../../images/astronaut.png';
   import SideList from "../../../lib/Components/SideList.svelte";
-import Share from "../../../lib/Components/Share.svelte";
-  import SideListSkeleton from "../../../lib/Components/SideListSkeleton.svelte";
+ import SideListSkeleton from "../../../lib/Components/SideListSkeleton.svelte";
   import {
     doc,
     query,
@@ -210,7 +209,7 @@ const deleteMyComment = async(id) => {
 <hr />
 
 <!-- Recommended cards -->
-<Share />
+
 
 <RecommendedCard tags={post.tags} currentId={params}/>
 
