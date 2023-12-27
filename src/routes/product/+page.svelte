@@ -7,7 +7,7 @@
   let fetchPopularPhotosUrl;
   let page = 1;
   let gallery = [];
-  let auth_key = 'YOUR_AUTH_KEY'; // Replace with your actual authorization key
+  let auth_key = '563492ad6f917000010000013457deb42ca2403a9074ac93b29156e6'; // Replace with your actual authorization key
 
   function updateInput(event) {
     searchValue = event.target.value;
@@ -191,14 +191,8 @@
 <form class="search-form">
 				
 
-				<input
-					type="text"
-					name="search"
-					class="search-input input"
-					placeholder="Find Popular photos..." bind:this={searchInput}
-				/>
-				<button class="search-Btn">Search</button>
-			</form>
+				
+							</form>
 		
 		<section>
 			<div class="navbar">
