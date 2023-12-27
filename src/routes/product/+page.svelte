@@ -1,4 +1,4 @@
-<script>
+<script defer>
   import { onMount } from 'svelte';
 
   let searchValue = '';
@@ -18,6 +18,22 @@
     searchValue = '';
     console.log('Gallery Data Cleared');
   }
+const galleryImages = document.querySelectorAll('.photoContainer img');
+const lightbox = document.getElementById('lightbox');
+
+if (galleryImages.length > 0 && lightbox) {
+    galleryImages.forEach((image) => {
+        image.addEventListener('click', (e) => {
+            lightbox.classList.add('active');
+            const img = document.createElement('img');
+            img.src = image.src;
+            while (lightbox.firstChild) {
+                lightbox.removeChild(lightbox.firstChild);
+            }
+            lightbox.appendChild(img);
+        });
+    });
+}
 
   async function fetchApi(url) {
     const response = await fetch(url, {
