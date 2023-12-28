@@ -27,6 +27,9 @@
 
     console.log("Form submitted to Firebase Realtime Database!");
   };
+onMount(()=>{
+        document.title = "Contact";
+    })
 </script>
 
 <style>
