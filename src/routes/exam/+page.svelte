@@ -9,7 +9,7 @@
     const db = getDatabase();
 
     // Reference to 'jachai/exams/practice'
-    const examsRef = ref(db, 'jachai/exams/practice');
+    const examsRef = ref(db, 'exams');
 
     // Fetch exams from Firebase
     onValue(examsRef, (snapshot) => {
