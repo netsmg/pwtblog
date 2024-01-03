@@ -132,7 +132,7 @@
       alt="Logo"
     /> -->
     <span
-      class="max-sm:text-[17px] self-center whitespace-nowrap text-xl font-bold font-poppins dark:text-orange-600 text-orange-500"
+      class="max-sm:text-[17px] self-center whitespace-nowrap text-xl font-bold font-poppins dark:text-blue-600 text-blue-500"
     >
       PWTBLOG
     </span>
