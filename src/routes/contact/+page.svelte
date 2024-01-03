@@ -39,13 +39,13 @@ onMount(()=>{
 <div class="variant-glass p-5 rounded-md flex flex-col gap-2">
     <form on:submit={handleSubmit}>
   <label for="name">Name:</label>
-  <input type="text" class="input" id="name" bind:value={formData.name} />
+  <input type="text" class="input border rounded-md w-full" id="name" bind:value={formData.name} />
 
   <label for="email">Email:</label>
-  <input type="email" id="email" class="input" bind:value={formData.email} />
+  <input type="email" id="email" class="input border rounded-md w-full" bind:value={formData.email} />
 
   <label for="message">Message:</label>
-  <textarea class="input" id="message" rows="4" bind:value={formData.message}></textarea>
+  <textarea class="input border rounded-md w-full" id="message" rows="4" bind:value={formData.message}></textarea>
 
   <button type="submit" class="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
 </form>
