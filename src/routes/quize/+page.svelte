@@ -1,48 +1,48 @@
 <script>
   import { onMount } from 'svelte';
-  import { getFirestore, collection, getDocs } from 'firebase/firestore';
-  
+  import { getDatabase, ref, get } from 'firebase/database';
 
-  let questions = [];
-  let currentQuestion = 0;
-  let userScore = 0;
+  let exams = [];
 
-  const loadQuestions = async () => {
-    const db = getFirestore();
-    const questionsCollection = collection(db, 'questions');
-    const snapshot = await getDocs(questionsCollection);
-    
-    questions = snapshot.docs.map(doc => doc.data());
-  };
+  onMount(async () => {
+    const db = getDatabase();
 
-  onMount(loadQuestions);
+    // Assuming 'exams' is the root node in your Firebase Realtime Database
+    const examsRef = ref(db, 'exams');
+    const examsSnapshot = await get(examsRef);
 
-  const answerSelected = (selectedOption) => {
-    if (selectedOption === questions[currentQuestion].correctAnswer) {
-      userScore++;
-    }
-
-    if (currentQuestion < questions.length - 1) {
-      currentQuestion++;
-    } else {
-      navigate('/results', { state: { userScore } });
-    }
-  };
+    exams = examsSnapshot.val();
+  });
 </script>
 
-<main class="p-4">
-  {#if questions.length > 0}
-    <h2 class="text-2xl font-bold mb-4">Question {currentQuestion + 1}</h2>
-    <p class="mb-4">{questions[currentQuestion].text}</p>
+<main>
+  {#if exams}
+    {#each Object.entries(exams) as [id, { details, questions }]}
+      <section>
+        <h2>{details.name}</h2>
+        <p>Duration: {details.duration} minutes</p>
+        <p>Negative Marking: {details.negative ? 'Yes' : 'No'}</p>
 
-    {#each questions[currentQuestion].options as option (option)}
-      <button
-        class="bg-blue-500 text-white px-4 py-2 rounded mb-2"
-        on:click={() => answerSelected(option)}>
-        {option}
-      </button>
+        <ul>
+          {#each Object.values(questions) as { text, options, correctAnswer }}
+            <li>
+              <p>{text}</p>
+              <ul>
+                {#each options as option}
+                  <li>{option}</li>
+                {/each}
+              </ul>
+              <p>Correct Answer: {correctAnswer}</p>
+            </li>
+          {/each}
+        </ul>
+      </section>
     {/each}
-  {:else}
-    <p>Loading questions...</p>
   {/if}
 </main>
+
+<style>
+  section {
+    margin-bottom: 20px;
+  }
+</style>
