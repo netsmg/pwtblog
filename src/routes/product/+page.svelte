@@ -31,10 +31,15 @@
         post.content.toLowerCase().includes(lowerCaseSearchTerm) ||
         post.tags.some((tag) => tag.toLowerCase().includes(lowerCaseSearchTerm));
 
-      if (postMatchesSearch) {
+      if (searchTerm === '' || postMatchesSearch) {
         searchResults.push(post);
       }
     });
+
+    // Open the modal when search results are available
+    if (searchResults.length > 0) {
+      openModal();
+    }
   };
 
   let modalOpen = false;
@@ -55,8 +60,8 @@
 <main>
   <h1>Search Page</h1>
   
-  <input bind:value={searchTerm} placeholder="Search posts" />
-  <button on:click={searchPosts} class="btn variant-filled-primary">Search</button>
+  <input bind:value={searchTerm} placeholder="Search posts" on:input={searchPosts} />
+  <!-- No need for a separate search button -->
 
   {#if searchResults.length > 0}
     <button on:click={openModal} class="btn variant-filled-primary">Open Results</button>
