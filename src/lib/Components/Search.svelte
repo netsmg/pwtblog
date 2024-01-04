@@ -52,9 +52,7 @@
     modalOpen = false;
   };
 
-  onMount(() => {
-    document.title = "PWTBLOG | Search";
-  });
+  
 </script>
 
 
@@ -101,8 +99,8 @@
 
 </div>
 </div>
-<main>
-  <h1>Search Page</h1>
+
+  
   
   <input bind:value={searchTerm} placeholder="Search posts" on:input={searchPosts} />
   <!-- No need for a separate search button -->
@@ -127,7 +125,7 @@
       </div>
     </div>
   {/if}
-</main>
+
 
 <style>
   /* Modal styles */
