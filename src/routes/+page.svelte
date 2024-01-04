@@ -30,7 +30,7 @@
 
   let posts = [];
   let lastVisible;
-  let lim = 10;
+  let lim = 20;
   let postCount = 0;
 
   const makeData = (docS) => {
