@@ -102,30 +102,7 @@
 
   
   
-  <input bind:value={searchTerm} placeholder="Search posts" on:input={searchPosts} />
-  <!-- No need for a separate search button -->
-
-  {#if searchResults.length > 0}
-    <button on:click={openModal} class="btn variant-filled-primary">Open Results</button>
-  {/if}
-
-  {#if modalOpen}
-    <div class="modal">
-      <div class="modal-content">
-        <span on:click={closeModal} class="close">&times;</span>
-        
-        <h2>Search Results</h2>
-        
-        {#each searchResults as result, index}
-          <div>
-            <p><a href="/blog/{result.id}">{result.title}</a></p>
-            <!-- Display other post details as needed -->
-          </div>
-        {/each}
-      </div>
-    </div>
-  {/if}
-
+ 
 
 <style>
   /* Modal styles */
