@@ -8,12 +8,14 @@
 
   import Icon from '@iconify/svelte';
 
-  const q = query(collection(db, 'posts'), orderBy('createdAt'));
-  const querySnapshot = await getDocs(q);
-  
-  querySnapshot.forEach((doc) => {
-    const post = { id: doc.id, ...doc.data() };
-    posts.push(post);
+  onMount(async () => {
+    const q = query(collection(db, 'posts'), orderBy('createdAt'));
+    const querySnapshot = await getDocs(q);
+    
+    querySnapshot.forEach((doc) => {
+      const post = { id: doc.id, ...doc.data() };
+      posts.push(post);
+    });
   });
 </script>
 
@@ -24,7 +26,7 @@
     <div class="flex space-x-1 items-center">
       <img
         class="w-5 h-5 max-sm:w-3 max-sm:h-3 rounded-full"
-        src={avatar}
+        src='https://codebuckblog.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FLogo.e0b9e0a0.png&w=128&q=75'
         alt="Rounded avatar"
       />
       
