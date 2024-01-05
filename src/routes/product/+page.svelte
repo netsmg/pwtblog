@@ -2,123 +2,50 @@
   import { onMount } from "svelte";
   import { collection, getDocs, query, orderBy } from "firebase/firestore";
   import { getFirestore } from 'firebase/firestore';
-
+  
   let products = [];
   const db = getFirestore();
-
-  let searchTerm = '';
-  let searchResults = [];
-
-  const searchPosts = async () => {
-    searchResults = [];
-
-    const q = query(
-      collection(db, "posts"),
-      orderBy("createdAt", "desc")
-    );
-
-    const querySnapshot = await getDocs(q);
-
-    querySnapshot.forEach((doc) => {
-      const post = {
-        ...doc.data(),
-        id: doc.id
-      };
-
-      const lowerCaseSearchTerm = searchTerm.toLowerCase();
-      const postMatchesSearch =
-        post.title.toLowerCase().includes(lowerCaseSearchTerm) ||
-        post.content.toLowerCase().includes(lowerCaseSearchTerm) ||
-        post.tags.some((tag) => tag.toLowerCase().includes(lowerCaseSearchTerm));
-
-      if (searchTerm === '' || postMatchesSearch) {
-        searchResults.push(post);
-      }
-    });
-
-    // Open the modal when search results are available
-    if (searchResults.length > 0) {
-      openModal();
-    }
-  };
-
-  let modalOpen = false;
-
-  const openModal = () => {
-    modalOpen = true;
-  };
-
-  const closeModal = () => {
-    modalOpen = false;
-  };
-
-  onMount(() => {
-    document.title = "PWTBLOG | Search";
-  });
+  
+  import Icon from '@iconify/svelte';
+  
+  export let avatar;
+  export let author;
+  export let title;
+  export let express;
+  export let createdAt;
+  export let tags;
+  export let mins;
+  export let read;
+  export let commentCount = 0;
 </script>
 
-<main>
-  <h1>Search Page</h1>
-  
-  <input bind:value={searchTerm} placeholder="Search posts" on:input={searchPosts} />
-  <!-- No need for a separate search button -->
-
-  {#if searchResults.length > 0}
-    <button on:click={openModal} class="btn variant-filled-primary">Open Results</button>
-  {/if}
-
-  {#if modalOpen}
-    <div class="modal">
-      <div class="modal-content">
-        <span on:click={closeModal} class="close">&times;</span>
-        
-        <h2>Search Results</h2>
-        
-        {#each searchResults as result, index}
-          <div>
-            <p><a href="/blog/{result.id}">{result.title}</a></p>
-            <!-- Display other post details as needed -->
-          </div>
-        {/each}
-      </div>
+<div on:click class="font-hind p-2 text-black dark:text-gray-400 variant-glass rounded">
+  <div class="text-xl font-bold">{title}</div>
+  <div class="text-md exp">{@html express}...</div>
+  <div class="flex space-x-1 items-center">
+    <img class="w-5 h-5 max-sm:w-3 max-sm:h-3 rounded-full" src={avatar} alt="Rounded avatar" />
+    <div class="text-sm font-bold max-sm:text-[10px]">{author}</div> <Icon icon="bi:dot" /> <div class="font-lato flex read gap-1 max-sm:text-[11px]">
+      <Icon icon="ic:baseline-remove-red-eye" />{read} <Icon icon="bi:dot" /> <Icon icon="cil:comment-bubble" /> {commentCount}
     </div>
-  {/if}
-</main>
+  </div>
+  <div class="flex flex-wrap gap-2 mt-2 items-center text-gray-500 font-poppins text-sm max-sm:text-[10px]">
+    <div>{createdAt}</div>
+    · {mins} min read ·
+    {#each tags as tag, index}
+      {#if index < 3}
+        <code>{tag}</code>
+      {/if}
+    {/each}
+  </div>
+</div>
+<hr />
 
 <style>
-  /* Modal styles */
-  .modal {
-    display: block;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-    padding-top: 60px;
+  .exp {
+    font-family: 'Lato', Kalpurush;
   }
 
-  .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  .read {
+    align-items: center;
   }
 </style>
