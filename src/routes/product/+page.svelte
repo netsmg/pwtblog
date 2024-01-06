@@ -9,6 +9,10 @@
   let projectTags = '';
   let projectImage = '';
   let projectDescription = '';
+  let demo = '';
+let code = '';
+
+
 
   const addProject = async () => {
     if (projectName && projectDescription) {
@@ -16,6 +20,8 @@
         name: projectName,
         description: projectDescription,
         image: projectImage,
+        demo: projectDemo,
+        code: projectCode,
         tags: projectTags.split(',').map(tag => tag.trim()) // assuming tags are comma-separated
       };
 
@@ -42,6 +48,10 @@
 
     <label for="projectImage">Project Image:</label>
     <input type="text" id="projectImage" class="input border rounded-md w-full" bind:value={projectImage} />
+    <label for="projectDemo">Project Demo:</label>
+    <input type="text" id="projectDemo" class="input border rounded-md w-full" bind:value={projectDemo} />
+    <label for="projectCode">Project Code:</label>
+    <input type="text" id="projectDemo" class="input border rounded-md w-full" bind:value={projectCode} />
 
     <label for="projectDescription">Project Description:</label>
     <textarea id="projectDescription" class="input border rounded-md w-full" bind:value={projectDescription}></textarea>
