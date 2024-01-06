@@ -51,7 +51,7 @@
     <label for="projectDemo">Project Demo:</label>
     <input type="text" id="projectDemo" class="input border rounded-md w-full" bind:value={projectDemo} />
     <label for="projectCode">Project Code:</label>
-    <input type="text" id="projectDemo" class="input border rounded-md w-full" bind:value={projectCode} />
+    <input type="text" id="projectCode" class="input border rounded-md w-full" bind:value={projectCode} />
 
     <label for="projectDescription">Project Description:</label>
     <textarea id="projectDescription" class="input border rounded-md w-full" bind:value={projectDescription}></textarea>
