@@ -47,7 +47,7 @@
               <p>{project.description}</p>
             </div>
             <button class="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><a href="{project.demo}">Demo</a></button>
-            <button class="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" <a href="{project.code}">Code</a></button>
+            <button class="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><a href="{project.code}">Code</a></button>
           </div>
         </div>
       {/each}
