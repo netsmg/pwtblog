@@ -1,4 +1,3 @@
-<!-- AddProject.svelte -->
 <script>
   import { getFirestore, collection, addDoc } from 'firebase/firestore';
   import { onMount } from 'svelte';
@@ -12,16 +11,14 @@
   let demo = '';
   let code = '';
 
-
-
   const addProject = async () => {
     if (projectName && projectDescription) {
       const projectData = {
         name: projectName,
         description: projectDescription,
         image: projectImage,
-        demo: projectDemo,
-        code: projectCode,
+        demo,
+        code,
         tags: projectTags.split(',').map(tag => tag.trim()) // assuming tags are comma-separated
       };
 
@@ -48,15 +45,15 @@
 
     <label for="projectImage">Project Image:</label>
     <input type="text" id="projectImage" class="input border rounded-md w-full" bind:value={projectImage} />
-    <label for="projectDemo">Project Demo:</label>
-    <input type="text" id="projectDemo" class="input border rounded-md w-full" bind:value={projectDemo} />
-    <label for="projectCode">Project Code:</label>
-    <input type="text" id="projectCode" class="input border rounded-md w-full" bind:value={projectCode} />
+
+    <label for="demo">Project Demo:</label>
+    <input type="text" id="demo" class="input border rounded-md w-full" bind:value={demo} />
+
+    <label for="code">Project Code:</label>
+    <input type="text" id="code" class="input border rounded-md w-full" bind:value={code} />
 
     <label for="projectDescription">Project Description:</label>
     <textarea id="projectDescription" class="input border rounded-md w-full" bind:value={projectDescription}></textarea>
-
-    <!-- Add other form fields as needed -->
 
     <button type="button" class="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" on:click={addProject}>Add Project</button>
   </form>
