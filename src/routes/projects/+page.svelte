@@ -18,18 +18,24 @@
 <main class="home">
   <section class="section3">
     <div class="projects-card">
-      <div class="projects-header">Projects ({{ projects.length }})</div>
+      <div class="projects-header">Projects {#if projects && projects.length > 0}({{ projects.length }}){/if}</div>
       <div class="projects-body">
-        {#each projects as project (project.id)}
-          <button>{project.name}</button>
-        {/each}
+        {#if projects && projects.length > 0}
+          {#each projects as project (project.id)}
+            <button>{project.name}</button>
+          {/each}
+        {:else}
+          <p>No projects available yet.</p>
+        {/if}
       </div>
     </div>
   </section>
   <section class="section4">
-    {#each projects as project (project.id)}
-      <div class="card__1 card-vertical">
-        <div class="card-header">
+    {#if projects && projects.length > 0}
+      {#each projects as project (project.id)}
+        <div class="card__1 card-vertical">
+          <!-- Your existing code for each project -->
+          <div class="card-header">
           <div class="card-image">
             <img src={project.image} alt={project.name}>
           </div>
@@ -44,15 +50,18 @@
           <div class="card-content">
             <p>{project.description}</p>
           </div>
-          <div class="card-buttons">
-            <button>Demo</button>
-            <button>Code</button>
-          </div>
+          <button>Demo</button>
+          <button>Code</button>
         </div>
-      </div>
-    {/each}
+      {/each}
+    {/if}
   </section>
 </main>
+
+
+
+
+
 
 
 
