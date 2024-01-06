@@ -209,9 +209,9 @@
 
       <AppRailTile
         on:click={openSide}
-        label="Blog"
+        label="Projects"
         tag="a"
-        href={"/blogs"}
+        href={"/projects"}
         value={3}
         class="{'/blogs' === $page.url.pathname ? '!bg-primary-500' : ''}"
         ><Icon class="text-3xl" icon="fluent-emoji-high-contrast:popcorn" />
