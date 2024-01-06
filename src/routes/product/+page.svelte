@@ -10,7 +10,7 @@
   let projectImage = '';
   let projectDescription = '';
   let demo = '';
-let code = '';
+  let code = '';
 
 
 
