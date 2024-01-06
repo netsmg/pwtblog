@@ -1,61 +1,53 @@
+<!-- AddProject.svelte -->
 <script>
-  import { onMount } from "svelte";
-  import { collection, getDocs, query, orderBy } from "firebase/firestore";
-  import { getFirestore } from 'firebase/firestore';
+  import { getFirestore, collection, addDoc } from 'firebase/firestore';
+  import { onMount } from 'svelte';
 
-  let posts = [];
   const db = getFirestore();
 
-  import Icon from '@iconify/svelte';
+  let projectName = '';
+  let projectTags = '';
+  let projectImage = '';
+  let projectDescription = '';
 
-  onMount(async () => {
-    const q = query(collection(db, 'posts'), orderBy('createdAt'));
-    const querySnapshot = await getDocs(q);
-    
-    querySnapshot.forEach((doc) => {
-      const post = { id: doc.id, ...doc.data() };
-      posts.push(post);
-    });
-  });
+  const addProject = async () => {
+    if (projectName && projectDescription) {
+      const projectData = {
+        name: projectName,
+        description: projectDescription,
+        image: projectImage,
+        tags: projectTags.split(',').map(tag => tag.trim()) // assuming tags are comma-separated
+      };
+
+      try {
+        await addDoc(collection(db, 'projects'), projectData);
+        console.log('Project added successfully!');
+      } catch (error) {
+        console.error('Error adding project:', error);
+      }
+    } else {
+      console.warn('Please fill out all fields.');
+    }
+  };
 </script>
 
-{#each posts as post (post.id)}
-  <div on:click class="font-hind p-2 text-black dark:text-gray-400 variant-glass rounded">
-    <div class="text-xl font-bold">{post.title}</div>
-    <div class="text-md exp">{@html post.express}...</div>
-    <div class="flex space-x-1 items-center">
-      <img
-        class="w-5 h-5 max-sm:w-3 max-sm:h-3 rounded-full"
-        src='https://codebuckblog.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FLogo.e0b9e0a0.png&w=128&q=75'
-        alt="Rounded avatar"
-      />
-      
-      <div class="text-sm font-bold max-sm:text-[10px]">{post.author}</div>
-      <Icon icon="bi:dot" />
-      <div class="font-lato flex read gap-1 max-sm:text-[11px]">
-        <Icon icon="ic:baseline-remove-red-eye" />{post.read}
-        <Icon icon="bi:dot" />
-        <Icon icon="cil:comment-bubble" /> {post.commentCount}
-      </div>
-    </div>
-    <div class="flex flex-wrap gap-2 mt-2 items-center text-gray-500 font-poppins text-sm max-sm:text-[10px]">
-      <div>{post.createdAt}</div>
-      · {post.mins} min read ·
-      {#each post.tags as tag, index}
-        {#if index < 3}
-          <code>{tag}</code>
-        {/if}
-      {/each}
-    </div>
-  </div>
-  <hr />
-{/each}
+<main class="add-project">
+  <h2>Add a New Project</h2>
+  <form>
+    <label for="projectName">Project Name:</label>
+    <input type="text" id="projectName" class="input border rounded-md w-full" bind:value={projectName} />
 
-<style>
-  .exp {
-    font-family: 'Lato', Kalpurush;
-  }
-  .read {
-    align-items: center;
-  }
-</style>
+    <label for="projectTags">Project Tags:</label>
+    <input type="text" id="projectTags" class="input border rounded-md w-full" bind:value={projectTags} />
+
+    <label for="projectImage">Project Image:</label>
+    <input type="text" id="projectImage" class="input border rounded-md w-full" bind:value={projectImage} />
+
+    <label for="projectDescription">Project Description:</label>
+    <textarea id="projectDescription" class="input border rounded-md w-full" bind:value={projectDescription}></textarea>
+
+    <!-- Add other form fields as needed -->
+
+    <button type="button" class="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" on:click={addProject}>Add Project</button>
+  </form>
+</main>
