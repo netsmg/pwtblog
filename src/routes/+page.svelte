@@ -91,6 +91,7 @@ import Search from "../lib/Components/Search.svelte";
 
   onMount(async ()=>{
     document.title = "PWTBLOG | Home";
+    document.description = "An authentic blog to share your code";
     posts = [];
     const q = query(
       collection(fstore, "posts"),
