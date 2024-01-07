@@ -1,6 +1,6 @@
 <script>
-	import Card from "../lib/components/Card.svelte";
-	import Table from "../lib/components/Table.svelte";
+	import Card from "../lib/Components/Card.svelte";
+	import Table from "../lib/Components/Table.svelte";
 	
 </script>
 
