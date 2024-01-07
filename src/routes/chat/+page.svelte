@@ -1,14 +1,14 @@
 <script>
-	import Card from "../lib/Components/Card.svelte";
+	import Carde from "../lib/Components/Card.svelte";
 	import Table from "../lib/Components/Table.svelte";
 	
 </script>
 
 <main>
 	
-	<Card>
+	<Carde>
 		<Table />
-	</Card>
+	</Carde>
 </main>
 
 <style>
