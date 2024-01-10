@@ -1,4 +1,4 @@
-script>
+<script>
   import { onMount } from 'svelte';
   import { getStorage, ref, listAll, getDownloadURL } from 'firebase/storage';
   const storage = getStorage();
