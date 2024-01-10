@@ -66,7 +66,7 @@
                 express: express,
                 content: content,
                 updatedAt: Timestamp.fromDate(new Date()),
-                author: 'Faisal Shohag',
+                author: 'PWTBLOG',
                 problems: [...problems]
             });
             console.log('Document updated!');
