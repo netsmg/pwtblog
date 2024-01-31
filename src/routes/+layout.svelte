@@ -87,7 +87,39 @@
   let:hidden
   let:toggle
 >
-  
+  <NavBrand>
+    <div class="flex items-center md:hidden">
+      <button on:click={openSide} class="lg:hidden btn btn-sm mr-4">
+        <span>
+          <svg viewBox="0 0 100 80" class="fill-token w-4 h-4">
+            <rect
+              rx="10px"
+              ry="10px"
+              stroke-linejoin="round"
+              width="100"
+              height="20"
+            />
+            <rect
+              rx="10px"
+              ry="10px"
+              stroke-linejoin="round"
+              y="30"
+              width="100"
+              height="20"
+            />
+            <rect
+              rx="10px"
+              ry="10px"
+              stroke-linejoin="round"
+              y="60"
+              width="100"
+              height="20"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+
     <span
       class="max-sm:text-[17px] self-center whitespace-nowrap text-xl font-bold font-poppins dark:text-blue-600 text-blue-500"
     >
