@@ -1,3 +1,1 @@
-<header>
-PWTBLOG
-</header>
+ <slot />
