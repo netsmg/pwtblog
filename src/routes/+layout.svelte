@@ -77,7 +77,13 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 />
-
+<!-- <link rel="stylesheet"  href="https://raw.githubusercontent.com/dracula/highlightjs/master/dracula.css"> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script> -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://firebasestorage.googleapis.com/v0/b/blog-424dc.appspot.com/o/dracula.css?alt=media&token=7a146a01-151e-404a-87d4-b4fce940de8e"/>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </svelte:head>
 <Toaster/>
 
@@ -120,8 +126,13 @@
       </button>
     </div>
 
+    <!-- <img
+      src="../src/images/f.png"
+      class="mr-3 hidden sm:h-9"
+      alt="Logo"
+    /> -->
     <span
-      class="max-sm:text-[17px] self-center whitespace-nowrap text-xl font-bold font-poppins dark:text-blue-600 text-blue-500"
+      class="max-sm:text-[17px] self-center whitespace-nowrap text-xl font-bold font-poppins dark:text-orange-600 text-orange-500"
     >
       PWTBLOG
     </span>
@@ -147,17 +158,106 @@
 
 </Navbar>
 
+<AppShell
+  slotSidebarLeft="rounded-3xl border-[1px] border-gray-300  dark:border-gray-600 {open
+    ? 'max-md:w-50 max-md:left-0'
+    : 'max-sm:w-0 max-md:left-0'} transition-all duration-500 fixed transition z-[99] h-auto top-[200px]"
+>
+  <svelte:fragment slot="sidebarLeft">
+    <AppRail>
+      <AppRailTile 
+      on:click={openSide} 
+      label="Home" tag="a" 
+      href={"/"} 
+      value={0}
+      class="{'/' === $page.url.pathname ? '!bg-primary-500' : ''}"
+        >
+        <Icon class="text-3xl" icon="pepicons-pop:planet" />
+        </AppRailTile
+      >
+      <!-- <AppRailTile
+        on:click={openSide}
+        label="Blogs"
+        tag="a"
+        href={"/blogs"}
+        value={1}
+        class="{'/blogs' === $page.url.pathname ? '!bg-primary-500' : ''}"
+        ><Icon class="text-3xl" icon="line-md:edit-twotone-full" /></AppRailTile
+      > -->
+      <AppRailTile
+        on:click={openSide}
+        label="Contact"
+        tag="a"
+        href={"/contact"}
+        value={1}
+        class="{'/contact' === $page.url.pathname ? '!bg-primary-500' : ''}"
+        ><Icon
+          class="text-3xl"
+          icon="ion:rocket"
+        /></AppRailTile
+      >
 
-  
+      <AppRailTile
+        on:click={openSide}
+        label="Problems"
+        tag="a"
+        href={"/problems"}
+        value={2}
+        class="{'/problems' === $page.url.pathname ? '!bg-primary-500' : ''}"
+        ><Icon class="text-3xl" icon="humbleicons:bulb" />
+        </AppRailTile>
 
-  
+      <AppRailTile
+        on:click={openSide}
+        label="Blog"
+        tag="a"
+        href={"/blogs"}
+        value={3}
+        class="{'/blogs' === $page.url.pathname ? '!bg-primary-500' : ''}"
+        ><Icon class="text-3xl" icon="fluent-emoji-high-contrast:popcorn" />
+        </AppRailTile>
+      
+        <AppRailTile
+        on:click={openSide}
+        label="About"
+        tag="a"
+        href={"/about"}
+        value={4}
+        class="{'/about' === $page.url.pathname ? '!bg-error-500' : ''}"
+        >
+        <Icon class="text-3xl" icon="line-md:heart-filled" />
+      </AppRailTile>
+   
+      </AppRail>
+  </svelte:fragment>
+
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <div
+    on:touchstart={() => {
+      return open ? (sideOpen = !sideOpen) : open;
+    }}
+    class="container lg:max-w-[1000px] body p-10 pt-4 space-y-4 max-sm:p-3 rounded-b-sm h-auto shadow-lg"
+  >
     <slot />
-  
-    
-  
+  <hr/>
+    <div class="w-full  mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://portfolio-alamin.vercel.app/" class="hover:underline">PWTBlOG™</a>. All Rights Reserved.
+    </span>
+    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+        <li>
+            <a target="__blank" href="https://codebuckblog.vercel.app/" class="mr-4 hover:underline md:mr-6 "><Icon icon="octicon:logo-github-16" /></a>
+        </li>
+    </ul>
+    </div>
+  </div>
 
    
 
+</AppShell>
 
-
-
+<style>
+  .body{
+    height: auto;
+    min-height: 100vh;
+  }
+</style>
