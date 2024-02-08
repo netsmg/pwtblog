@@ -11,13 +11,13 @@
   });
 </script>
 <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
-	<link rel="stylesheet" href="./css/bootstrap-grid.min.css">
-	<link rel="stylesheet" href="./css/owl.carousel.min.css">
-	<link rel="stylesheet" href="./css/magnific-popup.css">
-	<link rel="stylesheet" href="./css/nouislider.min.css">
-	<link rel="stylesheet" href="./css/jquery.mCustomScrollbar.min.css">
-	<link rel="stylesheet" href="./css/paymentfont.min.css">
-	<link rel="stylesheet" href="./css/main (1).css">
+	<link rel="stylesheet" href="./bootstrap-grid.min.css">
+	<link rel="stylesheet" href="./owl.carousel.min.css">
+	<link rel="stylesheet" href="./magnific-popup.css">
+	<link rel="stylesheet" href="./nouislider.min.css">
+	<link rel="stylesheet" href="./jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="./paymentfont.min.css">
+	<link rel="stylesheet" href="./main (1).css">
 <section class="section main container">
 
 <div>
