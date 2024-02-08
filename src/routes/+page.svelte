@@ -3,8 +3,7 @@
   import PostList from "../lib/Components/PostList.svelte";
   import { common } from "../stores/postStore";
   import PostSkeleton from "../lib/Components/PostSkeleton.svelte";
-  import Landing from "../lib/Components/Landing.svelte";
-import Search from "../lib/Components/Search.svelte";
+  import Search from "../lib/Components/Search.svelte";
   import venus from '../images/venus.svg';
   // import bottom from '../images/alien_cute.png';
   import SectionHead from "../lib/Components/SectionHead.svelte";
@@ -132,7 +131,7 @@ import Search from "../lib/Components/Search.svelte";
  
 </script>
 
-<Landing/>
+
 <Search/>
 
 <div class="absolute z-[-1] lg:left-[0] lg:top-[10px] top-[50px] md:top-10 md:left-[250px]">
