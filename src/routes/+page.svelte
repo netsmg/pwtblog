@@ -4,8 +4,7 @@
   import { common } from "../stores/postStore";
   import PostSkeleton from "../lib/Components/PostSkeleton.svelte";
   import Search from "../lib/Components/Search.svelte";
-  import venus from '../images/venus.svg';
-  // import bottom from '../images/alien_cute.png';
+  
   import SectionHead from "../lib/Components/SectionHead.svelte";
   import {
     collection,
@@ -135,7 +134,7 @@
 <Search/>
 
 <div class="absolute z-[-1] lg:left-[0] lg:top-[10px] top-[50px] md:top-10 md:left-[250px]">
-  <img class="lg:animate-pulse max-sm:max-h-[300px] lg:h-[350px] md:h-[200px]" src={venus} alt=""/>
+  
 </div>
 
 
