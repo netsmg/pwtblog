@@ -184,10 +184,10 @@
         value={1}
         class="{'/contact' === $page.url.pathname ? '!bg-primary-500' : ''}"
         >
-        <Icon class="text-3xl" icon="flat-color-icons:business-contact" /><Icon
+        <Icon class="text-3xl" icon="flat-color-icons:business-contact" />
           
-          </AppRailTile
-      >
+          </AppRailTile>
+      
 
       <AppRailTile
         on:click={openSide}
