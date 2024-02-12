@@ -14,7 +14,7 @@
   import {onMount} from 'svelte';
   import {userStore} from "../stores/userStore"
   import toast, { Toaster } from 'svelte-french-toast';
-  import { DarkMode } from 'flowbite-svelte';
+  
   let me;
   onMount(async () => {
     document.title = "PWTBLOG | Home";
@@ -131,24 +131,24 @@
       alt="Logo"
     /> -->
     <span
-      class="max-sm:text-[17px] self-center whitespace-nowrap text-xl font-bold font-poppins dark:text-orange-600 text-orange-500"
+      class="max-sm:text-[17px] self-center whitespace-nowrap text-xl font-bold font-poppins"
     >
       PWTBLOG
     </span>
-    <DarkMode {btnClass} />
+    
   </NavBrand>
  
   {#if me}
   <Chevron aligned><div><img class="w-[30px] h-[30px] rounded-full s-nb_ptBq0IalQ" src={me.photoURL} alt="Rounded avatar"></div></Chevron>
   <Dropdown>
     <DropdownHeader>{me.displayName}</DropdownHeader>
-    <DropdownItem><div class="flex justify-between items-center"><div class="flex gap-1 items-center"><Icon icon="mdi:theme-light-dark" /> Theme</div> <DarkMode {btnClass} /></div></DropdownItem>
+    
     <DropdownItem slot="footer" on:click={logOut}>Sign out</DropdownItem>
   </Dropdown>
   {:else}
   <div class="flex gap-2 items-center">
   <a href="/auth"><button type="button" class="btn variant-soft-primary max-sm:btn-sm">
-    <span><Icon icon="bi:google" /></span>
+    
     <span>Sign In</span>
   </button></a>
 </div>
@@ -171,18 +171,11 @@
       value={0}
       class="{'/' === $page.url.pathname ? '!bg-primary-500' : ''}"
         >
-        <Icon class="text-3xl" icon="pepicons-pop:planet" />
+        <Icon class="text-3xl" icon="material-symbols-light:wifi-home-outline"  style="color: black" />
+        
         </AppRailTile
       >
-      <!-- <AppRailTile
-        on:click={openSide}
-        label="Blogs"
-        tag="a"
-        href={"/blogs"}
-        value={1}
-        class="{'/blogs' === $page.url.pathname ? '!bg-primary-500' : ''}"
-        ><Icon class="text-3xl" icon="line-md:edit-twotone-full" /></AppRailTile
-      > -->
+      
       <AppRailTile
         on:click={openSide}
         label="Contact"
@@ -190,20 +183,22 @@
         href={"/contact"}
         value={1}
         class="{'/contact' === $page.url.pathname ? '!bg-primary-500' : ''}"
-        ><Icon
-          class="text-3xl"
-          icon="ion:rocket"
-        /></AppRailTile
+        >
+        <Icon class="text-3xl" icon="flat-color-icons:business-contact" /><Icon
+          
+          </AppRailTile
       >
 
       <AppRailTile
         on:click={openSide}
-        label="Problems"
+        label="Projects"
         tag="a"
-        href={"/problems"}
+        href={"/projects"}
         value={2}
-        class="{'/problems' === $page.url.pathname ? '!bg-primary-500' : ''}"
-        ><Icon class="text-3xl" icon="humbleicons:bulb" />
+        class="{'/projects' === $page.url.pathname ? '!bg-primary-500' : ''}"
+        >
+        <Icon class="text-3xl" icon="grommet-icons:projects"  style="color: black" />
+            
         </AppRailTile>
 
       <AppRailTile
@@ -213,7 +208,9 @@
         href={"/blogs"}
         value={3}
         class="{'/blogs' === $page.url.pathname ? '!bg-primary-500' : ''}"
-        ><Icon class="text-3xl" icon="fluent-emoji-high-contrast:popcorn" />
+        >
+        <Icon class="text-3xl" icon="fluent-mdl2:blog"  style="color: black" />
+            
         </AppRailTile>
       
         <AppRailTile
@@ -224,7 +221,7 @@
         value={4}
         class="{'/about' === $page.url.pathname ? '!bg-error-500' : ''}"
         >
-        <Icon class="text-3xl" icon="line-md:heart-filled" />
+        <Icon class="text-3xl" icon="flat-color-icons:about" />
       </AppRailTile>
    
       </AppRail>
@@ -240,14 +237,29 @@
     <slot />
   <hr/>
     <div class="w-full  mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://portfolio-alamin.vercel.app/" class="hover:underline">PWTBlOG™</a>. All Rights Reserved.
+        
+        
+
+<footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
+    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://pwtblog.vercel.app" class="hover:underline">PWTBLOG™</a>. All Rights Reserved.
     </span>
     <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
         <li>
-            <a target="__blank" href="https://codebuckblog.vercel.app/" class="mr-4 hover:underline md:mr-6 "><Icon icon="octicon:logo-github-16" /></a>
+            <a href="./about" class="hover:underline me-4 md:me-6">About</a>
+        </li>
+        <li>
+            <a href="/" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+        </li>
+        <li>
+            <a href="./projects" class="hover:underline me-4 md:me-6">Projects</a>
+        </li>
+        <li>
+            <a href="./contact" class="hover:underline">Contact</a>
         </li>
     </ul>
-    </div>
+</footer>
+
+      
   </div>
 
    
