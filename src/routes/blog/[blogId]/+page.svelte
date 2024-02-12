@@ -4,8 +4,7 @@
   import { page } from "$app/stores";
   import {goto} from '$app/navigation';
   import { common } from "../../../stores/postStore";
-  import ship from '../../../images/space-shuttle.png';
-  // import ship2 from '../../../images/astronaut.png';
+  
   import SideList from "../../../lib/Components/SideList.svelte";
  import SideListSkeleton from "../../../lib/Components/SideListSkeleton.svelte";
   import {
@@ -132,7 +131,7 @@ const deleteMyComment = async(id) => {
 
 
 <div class="ship max-sm:hidden max-md:hidden fixed bottom-0 right-0">
-  <img class="h-[200px]" src={ship} alt="" />
+  
 </div>
   <div class="flex gap-3 items-center md:float-right max-sm:hidden">
     {#each post.tags as tag}
