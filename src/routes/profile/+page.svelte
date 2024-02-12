@@ -3,7 +3,7 @@
   import { onMount, onDestroy } from 'svelte';
   import { writable } from 'svelte/store';
   import { doc, getDoc, setDoc } from 'firebase/firestore';
-  import { db } from '../firebase'; // Import Firebase Firestore instance
+  
 
   let user = null; // Initialize user variable
   let editMode = false; // Initialize edit mode variable
