@@ -1,9 +1,9 @@
 <script>
-  import { auth } from 'firebase/app'; // Import Firebase authentication module
+   
   import { onMount, onDestroy } from 'svelte';
   import { writable } from 'svelte/store';
   import { doc, getDoc, setDoc } from 'firebase/firestore';
-  
+  import { fauth } from "../../firebase";
 
   let user = null; // Initialize user variable
   let editMode = false; // Initialize edit mode variable
@@ -11,7 +11,7 @@
 
   // Function to fetch user data from Firebase Authentication and Firestore
   async function fetchUserData() {
-    const currentUser = auth().currentUser; // Get current user
+    const currentUser = fauth().currentUser; // Get current user
     if (currentUser) {
       // If user is logged in, set user data
       user = {
@@ -37,12 +37,12 @@
 
   // Log out function
   function logout() {
-    auth().signOut(); // Sign out current user
+    fauth().signOut(); // Sign out current user
   }
 
   // Function to save user data to Firestore
   async function saveUserData() {
-    const currentUser = auth().currentUser; // Get current user
+    const currentUser = fauth().currentUser; // Get current user
     if (currentUser) {
       // Update user's bio in Firestore
       const userDoc = doc(db, 'users', currentUser.uid);
