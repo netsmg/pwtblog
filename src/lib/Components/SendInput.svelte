@@ -41,4 +41,48 @@
     .commentInput {
         font-family: 'Lato', Kalpurush;
     }
+    /* Style for the input group */
+.input-group {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style for the button */
+.input-group button {
+  padding: 5px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* Style for the textarea */
+.input-group textarea {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  font-family: 'Lato', Kalpurush;
+  resize: none;
+  outline: none;
+}
+
+/* Style for the sign-in message */
+.input-group .sign-in-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 0, 0, 0.5);
+  color: #fff;
+  font-weight: bold;
+}
 </style>
