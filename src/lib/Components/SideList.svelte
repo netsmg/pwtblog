@@ -20,6 +20,30 @@
    
 
         <style>
+.variant-glass {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.variant-glass:hover {
+    background-color: #e5e7eb; /* Change this color to your desired hover color */
+}
+
+.variant-glass .dark:text-white,
+.variant-glass .text-gray-950 {
+    color: #374151; /* Adjust text color as needed */
+}
+
+.variant-glass .dark:text-white {
+    color: #f3f4f6; /* Adjust text color for dark mode */
+}
+
+.variant-glass .dark:text-white:hover,
+.variant-glass .text-gray-950:hover {
+    color: #1f2937; /* Adjust text color on hover */
+}
             li{
                 padding: 0 !important;
             }
