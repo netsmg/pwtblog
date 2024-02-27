@@ -2,12 +2,26 @@
 	"name": "PWTBLOG",
 	"short_name": "PWTBLOG",
 	"start_url": "./?utm_source=web_app_manifest",
-	"description": " An authentic blog to share your unique thoughts.",
+	"description": "An authentic blog to share your unique thoughts.",
 	"lang": "en",
 	"display": "standalone",
 	"orientation": "portrait",
 	"background_color": "#B0C4DE",
 	"theme_color": "#B0C4DE",
+	"shortcuts": [
+		{
+			"name": "Blog",
+			"shortName": "Blog",
+			"description": "An authentic blog",
+			"url": "/blog?utm_source=homescreen"
+		},
+		{
+			"name": "Contact",
+			"shortName": "Contact",
+			"description": "Contact us",
+			"url": "/contact?utm_source=homescreen"
+		}
+	],
 	"icons": [
 		{
 			"src": "logo32x32.png",
